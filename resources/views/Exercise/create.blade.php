@@ -8,13 +8,11 @@
                     <h3>{{ __('トレーニング記録追加') }}</h3>
                 </div>
                 <div class="card-body col-md-8 mx-auto">
-                    @if ($errors->any())
+                    @error('date')
                         <div class="alert text-danger">
-                            @foreach ($errors->all() as $message)
-                                <p>{{ $message }}</p>
-                            @endforeach
+                            <p>{{ $message }}</p>
                         </div>
-                    @endif
+                    @enderror
                     <form action="{{ route('exercise.create') }}" method="post">
                         @csrf
                         <div class="row">
@@ -77,15 +75,20 @@
                             </tbody>
                         </table>
                         <div class="form-group">
-                            <button type="button" class="btn btn-danger pull-right" name="btnForRemoveDetail"
-                                id="btnForRemoveDetail">{{ __('詳細行削除') }}</button>
-                            <button type="button" class="btn btn-secondary pull-right" name="btnForAddDetail"
-                                id="btnForAddDetail">{{ __('詳細行追加') }}</button>
+                            <button type="button" class="btn btn-xs btn-danger ml-2 pull-right" name="btnForRemoveDetail"
+                                id="btnForRemoveDetail" style="width: 2.5rem; height: 2.5rem;">
+                                <i class="bi bi-dash-lg"></i>
+                            </button>
+                            <button type="button" class="btn btn-xs btn-info ml-2 pull-right" name="btnForAddDetail"
+                                id="btnForAddDetail" style="width: 2.5rem; height: 2.5rem;">
+                                <i class="bi bi-plus-lg"></i>
+                            </button>
                         </div>
                         <br>
                         <br>
                         <br>
                         <div class="form-group">
+                            <a class="btn btn-info" href="{{ route('exercise.index') }}">戻る</a>
                             <input class="btn btn-primary" type="submit" value="登録">
                         </div>
                     </form>

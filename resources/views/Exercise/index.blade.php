@@ -49,12 +49,13 @@
                         '<td class="text-right">' + exercise.rep + '</td>' +
                         '<td class="text-right">' + exercise.weight + '</td>' +
                         '<td class="text-right">' + exercise.distance + '</td>' +
-                        '<td>' +
-                        '<a href="' + exercise.editUrl + '" class="btn btn-info btn-sm">編集</a>' +
+                        '<td class="text-center">' +
+                        '<a href="' + exercise.editUrl +
+                        '" class="btn p-0 bg-transparent border-0 text-info"><i class="bi bi-pencil"></i></a>' +
                         '<form action="' + exercise.deleteUrl +
                         '" method="post" class="d-inline px-2">' +
                         '@csrf' +
-                        '<button class="btn btn-sm btn-danger" onclick="return confirm(\'本当に削除してもよろしいですか？\')">削除</button>' +
+                        '<button class="btn p-0 bg-transparent border-0 text-danger" onclick="return confirm(\'本当に削除してもよろしいですか？\')"><i class="bi bi-trash"></i></button>' +
                         '</form>' +
                         '</td>' +
                         '</tr>';

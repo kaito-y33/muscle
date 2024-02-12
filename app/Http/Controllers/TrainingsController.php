@@ -17,9 +17,12 @@ class TrainingsController extends Controller
      */
     public function index()
     {
-        $trainings = Training::orderby('id')->paginate(10);
-        $categories = Category::all();
-        return view('admin.trainings.index', compact('trainings', 'categories'));
+        // 全トレーニング種目を取得
+        $trainings = Training::orderby('category_id', 'asc')
+            ->orderBy('id', 'asc')
+            ->paginate(10);
+
+        return view('admin.trainings.index', compact('trainings'));
     }
 
     /**

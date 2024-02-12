@@ -19,47 +19,54 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">MUSCLE APP</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                </li>
-                @guest
+        <div class="container">
+            <a class="navbar-brand" href="#">MUSCLE APP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="display: flex!important;">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('会員登録') }}</a>
+                        <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
-                    </li>
-                @endguest
-                @auth
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('exercise.index') }}">
-                            {{ __('トレーニング記録') }}
-                        </a>
-                    </li>
-                    <li class="nav-item active mr-auto">
-                        <a href="" class="nav-link" onclick="event.preventDefault();">
-                            {{ __('ユーザ名：') }}{{ Auth::user()->name }}
-                        </a>
-                    </li>
-                    <li class="nav-item active mr-auto">
-                        <a href="#" id="logout" class="nav-link">{{ __('ログアウト') }}</a>
-                        <form action="{{ route('logout') }}" method="post" id="logout-form" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                @endauth
-            </ul>
+                    @guest
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('会員登録') }}</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                        </li>
+                    @endguest
+                    @auth
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('exercise.index') }}">
+                                {{ __('トレーニング記録') }}
+                            </a>
+                        </li>
+                    @endauth
+                </ul>
+                <ul class="navbar-nav">
+                    @auth
+                        <li class="nav-item active">
+                            <a href="" class="nav-link" onclick="event.preventDefault();">
+                                {{ __('ユーザ名：') }}{{ Auth::user()->name }}
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="#" id="logout" class="nav-link">{{ __('ログアウト') }}</a>
+                            <form action="{{ route('logout') }}" method="post" id="logout-form" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    @endauth
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="container my-5">

@@ -92,15 +92,20 @@
                             </tbody>
                         </table>
                         <div class="form-group">
-                            <button type="button" class="btn btn-danger pull-right" id="btnForRemoveDetail"
-                                name="btnForRemoveDetail">{{ __('詳細行削除') }}</button>
-                            <button type="button" class="btn btn-secondary pull-right" id="btnForAddDetail"
-                                name="btnForAddDetail">{{ __('詳細行追加') }}</button>
+                            <button type="button" class="btn btn-xs btn-danger ml-2 pull-right" id="btnForRemoveDetail"
+                                name="btnForRemoveDetail">
+                                <i class="bi bi-dash-lg"></i>
+                            </button>
+                            <button type="button" class="btn btn-xs btn-info ml-2 pull-right" id="btnForAddDetail"
+                                name="btnForAddDetail">
+                                <i class="bi bi-plus-lg"></i>
+                            </button>
                         </div>
                         <br>
                         <br>
                         <br>
                         <div class="form-group">
+                            <a class="btn btn-info" href="{{ route('exercise.index') }}">戻る</a>
                             <input type="submit" class="btn btn-primary" value="登録">
                         </div>
                     </form>

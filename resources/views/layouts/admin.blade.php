@@ -8,43 +8,50 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ route('admin.index') }}">MUSCLE APP</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('admin.index') }}">{{ __('Home') }}</a>
-                </li>
-                @auth
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('admin.index') }}">MUSCLE APP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="display: flex!important;">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('users.index') }}">ユーザ管理</a>
+                        <a class="nav-link" href="{{ route('admin.index') }}">{{ __('Home') }}</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('trainings.index') }}">トレーニング種目管理</a>
-                    </li>
-                    <li class="nav-item active mr-auto">
-                        <a href="" class="nav-link" onclick="event.preventDefault();">
-                            {{ __('ユーザ名：') }}{{ Auth::user()->name }}
-                        </a>
-                    </li>
-                    <li class="nav-item active mr-auto">
-                        <a href="#" id="logout" class="nav-link">{{ __('ログアウト') }}</a>
-                        <form action="{{ route('logout') }}" method="post" id="logout-form" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                @endauth
-            </ul>
+                    @auth
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('users.index') }}">ユーザ管理</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('trainings.index') }}">トレーニング種目管理</a>
+                        </li>
+                    @endauth
+                </ul>
+                <ul class="navbar-nav">
+                    @auth
+                        <li class="nav-item active">
+                            <a href="" class="nav-link" onclick="event.preventDefault();">
+                                {{ __('ユーザ名：') }}{{ Auth::user()->name }}
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="#" id="logout" class="nav-link">{{ __('ログアウト') }}</a>
+                            <form action="{{ route('logout') }}" method="post" id="logout-form" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    @endauth
+                </ul>
+            </div>
         </div>
     </nav>
-    <div class="container my-5">
+    <div class="container">
         @yield('content')
     </div>
 

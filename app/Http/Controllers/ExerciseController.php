@@ -29,23 +29,7 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        // ログイン中のユーザーを特定.
-        $user = Auth()->user();
-
-        // 該当ユーザのトレーニング記録を全取得.
-        $exercises = Exercise::where('user_id', $user->id)
-            ->with('training')
-            ->with('rep')
-            ->with('weight')
-            ->with('distance')
-            ->orderBy('date', 'desc')
-            ->orderBy('id')
-            ->get();
-
-        // トレーニング記録をVIewへ.
-        return View('Exercise.index', compact(
-            'exercises',
-        ));
+        return View('Exercise.index');
     }
 
     /**
@@ -210,25 +194,21 @@ class ExerciseController extends Controller
                 $exercise->update([
                     'training_id' => $record['trainingId'],
                 ]);
-                Log::emergency("Exercise成功");
                 // Repテーブル更新.
                 $rep = Rep::where('id', $record['repId']);
                 $rep->update([
                     'rep' => $record['rep'],
                 ]);
-                Log::emergency("Rep成功");
                 // Weightテーブル更新.
                 $weight = Weight::where('id', $record['weightId']);
                 $weight->update([
                     'weight' => $record['weight'],
                 ]);
-                Log::emergency("Weight成功");
                 // Distanceテーブル更新.
                 $distance = Distance::where('id', $record['distanceId']);
                 $distance->update([
                     'distance' => $record['distance'],
                 ]);
-                Log::emergency("Distance成功");
             }
             // コミット.
             DB::commit();
@@ -272,13 +252,13 @@ class ExerciseController extends Controller
      * @param Request $request
      * @return void
      */
-    public function GetAddDispExercises(Request $request)
+    public function getAddDisplayExercises(Request $request)
     {
         // ログイン中のユーザーを特定.
         $user = Auth()->user()->id;
 
         // 1ページ当たりの表示件数
-        $perPage = 5;
+        $perPage = 10;
         // リクエストから現在のページ数取得
         $page = $request->query('page', 1);
 

@@ -15,40 +15,19 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'name' => '胸',
-        ]);
+        $categories = [
+            ['name' => '胸'],
+            ['name' => '背中'],
+            ['name' => '脚'],
+            ['name' => '腕'],
+            ['name' => '肩'],
+            ['name' => '腹'],
+            ['name' => '有酸素運動'],
+            // 他のトレーニング部位をここに追加
+        ];
 
-        Category::create([
-            'name' => '背中',
-        ]);
-
-        Category::create([
-            'name' => '肩',
-        ]);
-
-        Category::create([
-            'name' => '腕',
-        ]);
-
-        Category::create([
-            'name' => '脚',
-        ]);
-
-        Category::create([
-            'name' => '有酸素運動',
-        ]);
-
-        Category::create([
-            'name' => 'コア',
-        ]);
-
-        Category::create([
-            'name' => 'ストレッチ',
-        ]);
-
-        Category::create([
-            'name' => 'その他',
-        ]);
+        foreach ($categories as $category) {
+            Category::create($category);
+        }
     }
 }

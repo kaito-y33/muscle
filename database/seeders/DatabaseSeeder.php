@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class,
             TrainingsTableSeeder::class,
             ExerciseSeeder::class,
+            RepSeeder::class,
+            WeightSeeder::class,
         ]);
     }
 }

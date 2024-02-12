@@ -17,6 +17,8 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "bootstrap-icons": "^1.10.3"
+        "bootstrap-icons": "^1.10.3",
+        "chart.js": "^4.3.0",
+        "chartjs": "^0.3.24"
     }
 }

@@ -36,6 +36,12 @@ class Exercise extends Model
         return $this->belongsTo(Training::class);
     }
 
+    public function trainingByCategory($categoryId)
+    {
+        return $this->belongsTo(Training::class)
+            ->where('category_id', $categoryId);
+    }
+
     public function rep()
     {
         return $this->hasOne(Rep::class)->withDefault([

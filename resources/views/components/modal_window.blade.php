@@ -5,7 +5,7 @@
                 <a id="modal-close" class="button-link">{{ __('✕') }}</a>
             </div>
             <h5 class="text-left">{{ __('トレーニング種目選択') }}</h5>
-            <div style="height:300px; overflow:scroll">
+            <div style="height:250px; overflow:scroll">
                 <table class="table table-bordered">
                     <thead>
                         <th class="col-1">

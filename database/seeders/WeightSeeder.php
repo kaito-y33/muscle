@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Exercise;
-use Carbon\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Weight;
 
-class ExerciseSeeder extends Seeder
+class WeightSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +15,6 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
-        Exercise::factory(1)->create();
+        Weight::factory(3)->create();
     }
 }
