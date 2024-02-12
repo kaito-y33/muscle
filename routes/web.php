@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/Exercise', [ExerciseController::class, 'index'])->name('exercise.index');
     Route::get('/Exercise/Create', [ExerciseController::class, 'create'])->name('exercise.create');
     Route::post('/Exercise/Create', [ExerciseController::class, 'store']);
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/Exercise/{exercise}/destroy', [ExerciseController::class, 'destroy'])->name('exercise.destroy');
 
     Route::get('/Exercise/Ajax', [ExerciseController::class, 'getAddDisplayExercises'])->name('exercise.ajax');
-    Route::get('/home/fetch-graph-data', [HomeController::class, 'GetChartDataAjax'])->name('home.ajax');
+    Route::get('/fetch-graph-data', [HomeController::class, 'GetChartDataAjax'])->name('home.ajax');
     Route::get('/logout', function () {
         return redirect('/login');
     })->name('logout');
